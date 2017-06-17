@@ -13,6 +13,7 @@ var Node = function(value, next, prev) {
 
 LinkedList.prototype.addToHead = function(value){
   // create the new node. Set its next value to the current head
+  // If its the first node, this.head will be null
   var newNode = new Node(value, this.head, null);
   if (this.head){
     // set the current head as the next
@@ -39,12 +40,19 @@ LinkedList.prototype.addToTail = function(value){
 };
 
 LinkedList.prototype.removeFromHead = function(){
-  var value = this.head;
+  // first check if there's a head
+  if (!this.head){
+    return null;
+  }
+  // get the value of current head
+  var value = this.head.value;
+  // set the head to the current heads next value
+  this.head = this.head.next;
   if(this.head) {
-    this.head = this.head.next;
     this.head.prev = null;
   } else {
-    return null;
+    // if the list is empty, set the tail to null
+    this.tail = null;
   }
   return value;
 };
@@ -53,9 +61,9 @@ LinkedList.prototype.removeFromHead = function(){
 
 var ll = new LinkedList();
 
-ll.addToTail(100);
-ll.addToTail(200);
-ll.addToTail(300);
-ll.removeFromHead();
+ll.addToHead(100);
+// ll.addToTail(200);
+// ll.addToTail(300);
+// ll.removeFromHead();
 
 console.log(ll);
