@@ -38,11 +38,24 @@ LinkedList.prototype.addToTail = function(value){
   this.tail = newNode;
 };
 
+LinkedList.prototype.removeFromHead = function(){
+  var value = this.head;
+  if(this.head) {
+    this.head = this.head.next;
+    this.head.prev = null;
+  } else {
+    return null;
+  }
+  return value;
+};
+
+
 
 var ll = new LinkedList();
 
-ll.addToHead(200);
-ll.addToHead(100);
+ll.addToTail(100);
+ll.addToTail(200);
 ll.addToTail(300);
+ll.removeFromHead();
 
 console.log(ll);
