@@ -80,7 +80,16 @@ LinkedList.prototype.removeTail = function(){
   return value;
 }
 
-
+LinkedList.prototype.search = function(searchValue) {
+  var currentNode = this.head;
+  while (currentNode) {
+    if(currentNode.value  === searchValue) {
+      return currentNode.value;
+    }
+    currentNode = currentNode.next;
+  }
+  return null;
+};
 
 var ll = new LinkedList();
 
