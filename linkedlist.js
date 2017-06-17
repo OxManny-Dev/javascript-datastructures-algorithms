@@ -46,16 +46,39 @@ LinkedList.prototype.removeHead = function(){
   }
   // get the value of current head
   var value = this.head.value;
-  // set the head to the current heads next value
+  // Set the head to the current heads next value
+  // If this is the only node in the list, this.head will be null
   this.head = this.head.next;
-  if(this.head) {
+  if (this.head) {
+  // If there's a head, set its previous value to null
     this.head.prev = null;
   } else {
-    // if the list is empty, set the tail to null
+    // Otherwise the list is empty so set the tail to null
     this.tail = null;
   }
+  // Return deleted nodes value
   return value;
 };
+
+LinkedList.prototype.removeTail = function(){
+  if(!this.tail) {
+    return null;
+  }
+  // Get the current value of the current tail.
+  var value = this.tail.value;
+  // Set the tail to the current tails previous value.
+  // If this is the only item in the list, this.tail will be null
+  this.tail = this.tail.prev;
+  if (this.tail){
+    // if there is a tail then set the tails next value to null
+    this.tail.next = null;
+  } else {
+    // Otherwise the list is empty so set the head to null
+    this.head = null;
+  }
+  // return deleted nodes value
+  return value;
+}
 
 
 
