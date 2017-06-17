@@ -39,7 +39,7 @@ LinkedList.prototype.addToTail = function(value){
   this.tail = newNode;
 };
 
-LinkedList.prototype.removeFromHead = function(){
+LinkedList.prototype.removeHead = function(){
   // first check if there's a head
   if (!this.head){
     return null;
