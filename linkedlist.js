@@ -81,21 +81,56 @@ LinkedList.prototype.removeTail = function(){
 }
 
 LinkedList.prototype.search = function(searchValue) {
+  // Set the currentNode to the head
   var currentNode = this.head;
+  // Loop through each node
   while (currentNode) {
+    // if the current nodes value is equal to search value
     if(currentNode.value  === searchValue) {
+      // return the current nodes value
       return currentNode.value;
     }
+    // set the currentNode to the next node to loop to the next
     currentNode = currentNode.next;
   }
+  // return null if nothing no value is found or is there's no more nodes
   return null;
 };
+
+
+LinkedList.prototype.indexOf = function(searchValue) {
+  // Set an array to save the indexes
+  var indexes = [];
+  // Set the current node to the head
+  var currentNode = this.head
+  // create a variable for keeping track of index
+  var currentIndex = 0;
+  // loop through each node until the next value is null
+  while (currentNode) {
+    if(currentNode.value === searchValue) {
+      // push the current index to array if the current nodes value is equal to the searh value
+      indexes.push(currentIndex);
+    }
+    // add 1 to index
+    currentIndex++
+    // Set the current node to the next node for looping
+    currentNode = currentNode.next;
+  }
+  // return the array
+  return indexes;
+}
 
 var ll = new LinkedList();
 
 ll.addToHead(100);
-// ll.addToTail(200);
-// ll.addToTail(300);
-// ll.removeFromHead();
+ll.addToTail(200);
+ll.addToTail(300);
+ll.addToTail(200);
+ll.addToTail(300);
+ll.addToTail(200);
+ll.addToTail(300);
+ll.addToHead(100);
+ll.addToTail(200);
 
-console.log(ll);
+
+console.log(ll.indexOf(200));
