@@ -55,9 +55,22 @@ BST.prototype.depthFirstSearch = function(iteratorFunc, order){
   }
   if (order === "post-order"){
     iteratorFunc(this.value);
-  } 
+  }
 };
 
+BST.prototype.breadthFirstTraversal = function(iteratorFunc) {
+  var queue = [this];
+  while (queue.length) {
+    var treeNode = queue.shift();
+    iteratorFunc(treeNode);
+    if(treeNode.left) {
+      queue.push(treeNode.left);
+    }
+    if(treeNode.right) {
+      queue.push(treeNode.right);
+    }
+  }
+};
 
 var bst = new BST(50);
 
