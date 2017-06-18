@@ -4,7 +4,6 @@ var BST = function(value) {
   this.right = null;
 };
 
-var bst = new BST(50);
 
 BST.prototype.insert = function(value) {
   if (value < this.value) {
@@ -39,15 +38,36 @@ BST.prototype.contains = function(value) {
       return this.right.contains(value);
     }
   }
-}
+};
+
+BST.prototype.depthFirstSearch = function(iteratorFunc, order){
+  if(order === "pre-order"){
+    iteratorFunc(this.value);
+  }
+  if(this.left) {
+    this.left.depthFirstSearch(iteratorFunc, order);
+  }
+  if(order === "in-order"){
+    iteratorFunc(this.value);
+  }
+  if(this.right){
+    this.right.depthFirstSearch(iteratorFunc, order);
+  }
+  if (order === "post-order"){
+    iteratorFunc(this.value);
+  } 
+};
 
 
-// var bst2 = new BST(100);
+var bst = new BST(50);
 
 bst.insert(100);
 bst.insert(90);
 bst.insert(50);
 bst.insert(40);
+bst.insert(21);
+bst.insert(47);
 
 console.log(bst);
-console.log(bst.contains(901));
+
+console.log(bst.depthFirstSearch(console.log, "post-order"));
