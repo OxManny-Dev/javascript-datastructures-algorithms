@@ -40,7 +40,7 @@ BST.prototype.contains = function(value) {
   }
 };
 
-BST.prototype.depthFirstSearch = function(iteratorFunc, order){
+BST.prototype.depthFirstTraversal = function(iteratorFunc, order){
   if(order === "pre-order"){
     iteratorFunc(this.value);
   }
