@@ -72,6 +72,22 @@ BST.prototype.breadthFirstTraversal = function(iteratorFunc) {
   }
 };
 
+BST.prototype.getMinVal = function() {
+  if (this.left) {
+    this.left.getMinVal();
+  } else {
+    return this.left.value;
+  }
+};
+
+BST.prototype.getMaxVal = function() {
+  if (this.right) {
+    this.right.getMaxVal();
+  } else {
+    return this.right.value;
+  }
+};
+
 var bst = new BST(50);
 
 bst.insert(100);
@@ -80,7 +96,8 @@ bst.insert(50);
 bst.insert(40);
 bst.insert(21);
 bst.insert(47);
+bst.insert(11);
 
 console.log(bst);
 
-console.log(bst.depthFirstSearch(console.log, "post-order"));
+// console.log(bst.depthFirstTraversal(console.log, "post-order"));
